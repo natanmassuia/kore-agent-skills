@@ -1,19 +1,22 @@
 # Kore Agent Skills
 
-Multi-agent skills for Kore development — UI polish, security audit, performance audit, UX writing, motion design, E2E validation, and basic code simplification.
+Multi-agent skills for Kore development — code simplification, UI/UX polish, security audit, performance audit, UX writing, motion design, E2E validation, targeted fixes, report generation, and validation workflow.
 
 ## Skills Included
 
 | Skill | Purpose |
 |---|---|
 | `caveman` | Strip code to simplest form |
+| `design-motion-principles` | Purposeful motion/animation (create + audit modes) |
+| `e2e-validator` | End-to-end test coverage audit |
+| `kore-fix` | Small focused fixes using targeted inspection |
+| `kore-report` | Report generation (tabular, no prose) |
+| `kore-validate` | Validation workflow (tiered testing) |
+| `performance-audit` | Slow path identification and optimization |
+| `security-audit` | OWASP Top 10 vulnerability review |
 | `ui-polish` | Visual consistency, accessibility, spacing |
 | `ui-ux-pro-max` | Broad UI/UX design intelligence (161 rules, 67 styles) |
-| `design-motion-principles` | Purposeful motion/animation (create + audit modes) |
 | `ux-writing-skill` | Client-friendly UX copy and microcopy |
-| `security-audit` | OWASP Top 10 vulnerability review |
-| `performance-audit` | Slow path identification and optimization |
-| `e2e-validator` | End-to-end test coverage audit |
 
 ## Installation
 
@@ -23,11 +26,14 @@ Multi-agent skills for Kore development — UI polish, security audit, performan
 git clone https://github.com/natanmassuia/kore-agent-skills.git
 cd kore-agent-skills
 
-# OpenCode
-.\scripts\install-opencode.ps1
+# OpenCode (project-level)
+.\install\install-opencode.ps1 -TargetProjectPath "E:\Projects\kore-app"
 
 # Claude Code
-.\scripts\install-claude.ps1
+.\install\install-claude.ps1
+
+# Codex
+.\install\install-codex.ps1
 ```
 
 ### Linux / macOS
@@ -36,10 +42,16 @@ cd kore-agent-skills
 git clone https://github.com/natanmassuia/kore-agent-skills.git
 cd kore-agent-skills
 
-# Copy to local OpenCode directory
+# Copy to local OpenCode skills directory
 cp -r skills/* ~/.config/opencode/skills/
 
-# Or Claude Code
+# Or copy to project-level .opencode/skills
+cp -r skills/* /path/to/project/.opencode/skills/
+
+# Or to project-level .agents/skills/
+cp -r skills/* /path/to/project/.agents/skills/
+
+# Claude Code
 cp -r skills/* ~/.claude/skills/
 ```
 
@@ -54,7 +66,7 @@ cp -r skills/* ~/.claude/skills/
 ```powershell
 cd kore-agent-skills
 git pull
-.\scripts\install-opencode.ps1
+.\install\install-opencode.ps1 -TargetProjectPath "E:\Projects\kore-app"
 ```
 
 ## Security
