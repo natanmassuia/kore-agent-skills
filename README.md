@@ -18,7 +18,28 @@ Multi-agent skills for Kore development — code simplification, UI/UX polish, s
 | `ui-ux-pro-max` | Broad UI/UX design intelligence (161 rules, 67 styles) |
 | `ux-writing-skill` | Client-friendly UX copy and microcopy |
 
-## Installation
+## Agent Installation (Automatic)
+
+Any AI coding agent can self-install by parsing [`agent-install.json`](agent-install.json):
+
+```json
+{
+  "skills_source": "skills/",
+  "targets": {
+    "opencode": { "paths": [".opencode/skills/", ".agents/skills/"] },
+    "claude":    { "paths": [".claude/skills/"] },
+    "codex":     { "paths": [".agents/skills/"] }
+  }
+}
+```
+
+Steps an agent should follow:
+1. Clone this repo (or read `skills/` directory remotely)
+2. Copy each skill directory to the project's target path
+3. Apply `config_updates` (e.g., `opencode.json` permissions or `AGENTS.md` block)
+4. Run validation
+
+## Manual Installation
 
 ### Windows (PowerShell)
 

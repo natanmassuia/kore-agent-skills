@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "Kore Agent Install Manifest",
+  "type": "object",
+  "required": ["name", "description", "version", "skills_source", "targets"],
+  "properties": {
+    "name": { "type": "string", "description": "Package name" },
+    "description": { "type": "string", "description": "Brief description" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "skills_source": { "type": "string", "description": "Relative path to skills directory" },
+    "targets": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-z]+$": {
+          "type": "object",
+          "required": ["description", "paths"],
+          "properties": {
+            "description": { "type": "string" },
+            "paths": { "type": "array", "items": { "type": "string" } },
+            "config_updates": { "type": "object" },
+            "install_scripts": { "type": "array", "items": { "type": "string" } }
+          }
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "command": { "type": "string" },
+        "checks": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "agent_instructions": {
+      "type": "object",
+      "properties": {
+        "install_steps": { "type": "array", "items": { "type": "string" } },
+        "skill_format": { "type": "object" }
+      }
+    }
+  }
+}

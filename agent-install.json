@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/natanmassuia/kore-agent-skills/main/agent-install.schema.json",
+  "name": "Kore Agent Skills",
+  "description": "Multi-agent skills for Kore development",
+  "version": "1.0.0",
+  "skills_source": "skills/",
+  "targets": {
+    "opencode": {
+      "description": "OpenCode AI",
+      "paths": [
+        ".opencode/skills/",
+        ".agents/skills/",
+        "~/.config/opencode/skills/"
+      ],
+      "config_updates": {
+        "opencode.json": {
+          "description": "Add skill permissions",
+          "key": "permission.skill",
+          "value": { "*": "allow" }
+        }
+      },
+      "install_scripts": ["install/install-opencode.ps1"]
+    },
+    "claude": {
+      "description": "Claude Code (Anthropic)",
+      "paths": [".claude/skills/"],
+      "install_scripts": ["install/install-claude.ps1"]
+    },
+    "codex": {
+      "description": "Codex / Cline / Roo / general AI coding agents",
+      "paths": [".agents/skills/"],
+      "config_updates": {
+        "AGENTS.md": {
+          "description": "Append managed skills block (or replace existing KORE_AGENT_SKILLS block)",
+          "block_markers": { "start": "<!-- KORE_AGENT_SKILLS_START -->", "end": "<!-- KORE_AGENT_SKILLS_END -->" }
+        }
+      },
+      "install_scripts": ["install/install-codex.ps1"]
+    }
+  },
+  "validation": {
+    "command": "powershell -File scripts/validate-skills.ps1",
+    "checks": [
+      "Each skill directory has a SKILL.md with YAML frontmatter",
+      "No secrets or credentials in skill files"
+    ]
+  },
+  "agent_instructions": {
+    "install_steps": [
+      "1. Clone this repository or copy its contents",
+      "2. Identify the target agent type (opencode, claude, or codex/general)",
+      "3. For each skill in skills_source, copy the skill directory to the corresponding target path",
+      "4. If config_updates exist, apply them to the project's config files",
+      "5. Run validation to ensure all skills are properly installed"
+    ],
+    "skill_format": {
+      "required_file": "SKILL.md",
+      "frontmatter_fields": ["name", "description"],
+      "recommended_fields": ["compatibility"],
+      "content_sections": ["Purpose", "Rules", "Process", "Output"]
+    }
+  }
+}
