@@ -1,6 +1,6 @@
 # Kore Agent Skills
 
-Multi-agent skills for Kore development — code simplification, UI/UX polish, security audit, performance audit, UX writing, motion design, E2E validation, targeted fixes, report generation, and validation workflow.
+Multi-agent skills for Kore development — code simplification, UI/UX polish, security audit, source audit, performance audit, UX writing, motion design, E2E validation, targeted fixes, report generation, and validation workflow.
 
 ## Skills Included
 
@@ -14,9 +14,12 @@ Multi-agent skills for Kore development — code simplification, UI/UX polish, s
 | `kore-validate` | Validation workflow (tiered testing) |
 | `performance-audit` | Slow path identification and optimization |
 | `security-audit` | OWASP Top 10 vulnerability review |
+| `security-source-audit` | Source audit for internal/vibecoded apps — network automation, equipment credentials, command/SSH injection, operational hardening |
 | `ui-polish` | Visual consistency, accessibility, spacing |
 | `ui-ux-pro-max` | Broad UI/UX design intelligence (161 rules, 67 styles) |
 | `ux-writing-skill` | Client-friendly UX copy and microcopy |
+
+`security-audit` and `security-source-audit` are complementary: the former reviews application security against OWASP Top 10; the latter audits the source of internal/vibecoded operational systems (equipment credentials, network automation, command/SSH injection) with evidence by file/line.
 
 ## Agent Installation (Automatic)
 
